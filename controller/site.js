@@ -2,7 +2,9 @@ var config = require('../config');
 var cache = require('../common/cache');
 var xmlbuilder = require('xmlbuilder');
 
-exports.index = function (req, res, next) {
+exports.index = function(req, res, next) {
+  console.log('index');
+
   res.render('index', {
     site: {
       title: config.name,

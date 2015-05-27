@@ -1,12 +1,15 @@
 var express = require('express');
 var config = require('./config');
 var passport = require('passport');
+var site = require('./controller/site');
 var sina = require('./controller/sina');
+var sign = require('./controller/sign');
 
 var router = express.Router();
 
 // 主页
 router.get('/', site.index);
+
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
 // 注册
@@ -19,9 +22,10 @@ if (config.allow_sign_up) {
 }
 
 // Auth
-app.get('/auth/sina', passport.authenticate('sina'));
+router.get('/auth/sina', passport.authenticate('sina'));
 // Verify Auth
-app.get('/auth/sina/callback', passport.authenticate('sina', { failureRedirect: '/' }, sina.callback));
+router.get('/auth/sina/callback', passport.authenticate('sina', { failureRedirect: '/' }, sina.callback));
 
+console.log('web router');
 
 module.exports = router;

@@ -2,7 +2,7 @@ var config = require('./config');
 
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('response-time'));
 
 // uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/favicon.ico'));
+// app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -76,7 +76,7 @@ passport.deserializeUser(function(user, callback) {
 
 passport.use(new PassportSina(config.sina_oauth, sina_strategy));
 
-app.use('/api/v1', cors(), api_router_v1);
+app.use('/api/v1', cors(), api_router);
 app.use('/', web_router);
 
 // catch 404 and forward to error handler
@@ -109,6 +109,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

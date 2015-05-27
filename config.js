@@ -53,8 +53,8 @@ module.exports = {
 
   // sina webo 登陆配置
   sina_oauth: {
-    clientID: '',
-    clientSecret: '',
-    callbackURL: ''
+    clientID: 1574152827,
+    clientSecret: '1f93ee69890bf846176e0b5b33c622e5',
+    callbackURL: '/auth/sina/callback'
   }
 };
