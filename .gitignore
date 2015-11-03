@@ -1,4 +1,5 @@
 config.js
+dump.rdb
 
 # Numerous always-ignore extensions
 *.bak
