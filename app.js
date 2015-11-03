@@ -11,12 +11,14 @@ var cors = require('cors');
 var compress = require('compression');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
-var passport = require('passport');
-var PassportSina = require('passport-sina');
-var sina_strategy = require('./middleware/sina_strategy');
+// var passport = require('passport');
+// var PassportSina = require('passport-sina');
+// var sina_strategy = require('./middleware/sina_strategy');
 
 var api_router = require('./api_router');
 var web_router = require('./web_router');
+
+require('./common/db');
 
 var app = express();
 
@@ -25,7 +27,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('response-time'));
+// app.use(require('response-time'));
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -45,13 +47,15 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 if (!config.debug) {
   app.use(function (req, res, next) {
     if (req.path.indexOf('/api') === -1) {
-      csurf()(req, res, next);
+      csurf({
+        cookie: true
+      })(req, res, next);
       return;
     }
 
@@ -66,15 +70,15 @@ app.use(function (req, res, next) {
   next();
 });
 
-passport.serializeUser(function(user, callback) {
-    callback(null, user);
-});
+// passport.serializeUser(function(user, callback) {
+//     callback(null, user);
+// });
+//
+// passport.deserializeUser(function(user, callback) {
+//     callback(null, user);
+// });
 
-passport.deserializeUser(function(user, callback) {
-    callback(null, user);
-});
-
-passport.use(new PassportSina(config.sina_oauth, sina_strategy));
+// passport.use(new PassportSina(config.sina_oauth, sina_strategy));
 
 app.use('/api/v1', cors(), api_router);
 app.use('/', web_router);
