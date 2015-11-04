@@ -18,7 +18,7 @@ var Schema = mongoose.Schema;
 // url: "http://www.baidu.com/zhixin.php?url=Kf0000KmTrye6N9sGknfIgmt3uGNC_0xlRAYXI2Ouq1fuSPPc0pMNa_0xuaKFMJj5pJHztLGbjLvWqd2dAWhDovwnrO-4rBF_fBy4seaRqiWSFBXe3HMgMCMEpWHgXv7CVsLpd3.Db_juvIW2c2AJjEfdmhPd--h1oJuYGknNtIMyPnLYFhknIXL68msSxW9qx-9Ld3x5x9qVXZdLmx5GsS81jlen5MY3Ih1j_S8Z1lTr11sethZ1vmxUg9vxj9tSMjeXMjES7mh79h9men-xD0.THLPSP21Yte5Vtg7YPastfKYTh7buy-b5H610APETLwxTh78p1Ys0ZPdmM7GujYkPjfvPjRkrHTknWTznj0Lrjm10ANYXgK-5HDk0ANGujYknWcvnsK-uAN1mv-b5H00mvkGmvVxIZ-suHYk0ZK85HD0IANzUy-8mysqn0KlIjd1uykh0ZKs5HcYPjnknWcLP0K9uA-b5HcvrHD3P10zn1f10A-1gLIGThN_ugP15H00ug9Y5yu-Uhk-pHCervuzUvYlTvN_uW_eTZuGujCkPjfvPjRkrHmdPHRYP1TsrH6z0APzm1Y1nHmkP0"
 
 var game = new Schema({
-  gameid: { type: String,  unique: true }
+  gameid: { type: String,  unique: true },
   gameurl: String,
   genre: String,
   gifturl: String,
