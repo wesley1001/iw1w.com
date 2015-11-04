@@ -1,0 +1,20 @@
+{
+  "name": "iw1w.com",
+  "version": "0.0.0",
+  "homepage": "https://github.com/iw1w/iw1w.com",
+  "authors": [
+    "Kane <dmccer@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "~3.0.3",
+    "zepto": "~1.1.6"
+  }
+}
