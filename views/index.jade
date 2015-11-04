@@ -1,7 +1,33 @@
 extends layout
 
+block links
+  link(rel='stylesheet', href='/css/index.css')
+    
 block content
-  h1= site.title
-  p Welcome to #{site.title}
+  .page
+    h1.logo(eid="logo")= site.title
+    
+    table.game-list
+      thead
+        tr
+          th 游戏名称
+          th 开服时间
+          th 类型
+          th 运营商
+          th 官网
+      tbody
+        each game in list
+          tr
+            td.game
+              a(href=game.gameurl, title=game.title, target="_black")= game.title
+            td= game.opentime
+            td.grey= game.genre
+            td.grey= game.operator
+            td.enter
+              a(href=game.gameurl, target="_blank") 进入游戏
+              
+  script(src='http://cdn.staticfile.org/zepto/1.1.4/zepto.min.js')
+  script(src='/js/page/index.js')
+          
   
   
