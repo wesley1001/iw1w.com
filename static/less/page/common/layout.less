@@ -1,0 +1,100 @@
+@pageWidth: 80%;
+@headerPadding: 30px;
+@headerBgColor: darken(@teal, 5%);
+@headerTextColor: #ffffff;
+@headerFontSize: 28px;
+@headerHeight: 60px;
+@defaultPadding: 15px;
+@defaultMargin: 15px;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @headerHeight;
+  line-height: @headerHeight;
+  background-color: @headerBgColor;
+  color: @headerTextColor;
+  z-index: 9999;
+
+  h1 {
+    font-size: @headerFontSize;
+    height: 100%;
+    float: left;
+    margin-bottom: 0;
+
+    a {
+      display: block;
+      line-height: @headerHeight;
+      color: @headerTextColor;
+      padding-left: @headerPadding;
+      padding-right: @headerPadding;
+    }
+  }
+
+  .user {
+    float: right;
+    height: 100%;
+
+    span, a {
+      display: inline-block;
+    }
+
+    span {
+      padding-right: @defaultPadding;
+    }
+
+    b {
+      font-size: 22px;
+      text-transform: capitalize;
+      padding-left: 10px;
+      color: @yellow;
+    }
+
+    a {
+      color: @white;
+      padding-left: @defaultPadding;
+      padding-right: @defaultPadding;
+      margin-right: @defaultMargin;
+
+      &:hover {
+        color: darken(@white, 10%);
+      }
+    }
+  }
+}
+
+.page {
+  width: @pageWidth;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: @headerHeight;
+  padding-top: @defaultPadding;
+}
+
+.page-err-tip {
+  padding: @defaultPadding;
+  background-color: #faefc2;
+  color: #9d8713;
+  margin-bottom: @defaultMargin;
+}
+
+.footer {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: lighten(@lightBlack, 30%);
+
+  a {
+    color: lighten(@lightBlack, 30%);
+
+    &:hover {
+      color: @lightBlack;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

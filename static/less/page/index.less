@@ -1,0 +1,73 @@
+@import '../global/site.variable';
+
+.page {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo {
+  font-size: 60px;
+  text-align: center;
+  color: darken(@teal, 5%);
+  transform: scale(1.5);
+  transition: transform ease 0.6s;
+
+  &.small {
+    transform: scale(1);
+  }
+}
+
+.game-list {
+  width: 100%;
+
+  th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: black;
+  }
+
+  .game a {
+    display: block;
+    color: @teal;
+  }
+
+  .grey {
+    color: lighten(black, 40%);
+  }
+
+  .enter {
+    a {
+      display: block;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      background-color: darken(@teal, 5%);
+      color: @white;
+      border-radius: 3px;
+      width: 80%;
+      margin-left: 20%;
+    }
+  }
+
+  thead {
+    background-color: darken(@teal, 5%);
+
+    th {
+      color: @white;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 16px;
+    }
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #fefefe;
+    }
+
+    tr:hover {
+      background-color: rgba(0,181,173, 0.1);
+    }
+  }
+}
