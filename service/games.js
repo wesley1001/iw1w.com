@@ -2,8 +2,6 @@ var request = require('request');
 var qs = require('querystring');
 var game = require('../model/game');
 
-require('../common/db');
-
 var BAIDU_API = 'http://iwan.baidu.com/YeyouAjax/selectOpenserv';
 
 var _req = function(options) {
@@ -43,7 +41,7 @@ var build_options = function(params) {
   }
 };
 
-var list = exports.list = function() {
+exports.list = function() {
   var now = new Date();
   var params = {
     pid: 342,
@@ -71,13 +69,11 @@ var list = exports.list = function() {
         totalgame: vals[0].data.totalgame + vals[1].data.totalgame,
         list: vals[0].data.list.concat(vals[1].data.list)
       };
+    })
+    .then(function(data) {
+      // 和页面上的数据不是同步的
+      game.collection.insert(data.list);
+      // 还没插入完成，就会返回
+      return data;
     });
 }
-
-list().then(function(data) {
-  console.log(data.list.length);
-
-  game.collection.insert(data.list, function(err, docs) {
-    console.log('docs: ' + docs.length);
-  });
-})
