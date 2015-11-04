@@ -1,22 +1,26 @@
 var config = require('../config');
 var cache = require('../common/cache');
 var xmlbuilder = require('xmlbuilder');
+var games = require('../service/games');
 
 exports.index = function(req, res, next) {
-  console.log('index');
+  games
+    .list()
+    .then(function(data) {
+      var site = {
+        title: config.name,
+        description: config.description,
+        keywords: config.keywords,
+        google_tracker_id: config.google_tracker_id,
+        cnzz_tracker_id: config.cnzz_tracker_id,
+        logo: config.site_logo,
+        favicon: config.site_icon,
+        headers: config.site_headers
+      };
 
-  res.render('index', {
-    site: {
-      title: config.name,
-      description: config.description,
-      keywords: config.keywords,
-      google_tracker_id: config.google_tracker_id,
-      cnzz_tracker_id: config.cnzz_tracker_id,
-      logo: config.site_logo,
-      favicon: config.site_icon,
-      headers: config.site_headers
-    }
-  });
+      data.site = site;
+      res.render('index', data);
+    });
 }
 
 exports.sitemap = function(req, res, next) {
@@ -32,7 +36,7 @@ exports.sitemap = function(req, res, next) {
       // 缓存一天
       cache.set('sitemap', sitemap, 3600 * 24);
     }
-    
+
     res.type('xml');
     res.send(sitemap);
   });
